@@ -200,6 +200,13 @@ class AutoETS(_StatsModelsAdapter):
         additive_only=False,
         ignore_inf_ic=True,
         n_jobs=None,
+        method="lbfgs",
+        skip_hessian = True, 
+        approx_centered = False,
+        approx_complex_step = True,
+        return_raw = False, 
+
+
         **kwargs
     ):
         # Model params
@@ -231,6 +238,17 @@ class AutoETS(_StatsModelsAdapter):
         self.additive_only = additive_only
         self.ignore_inf_ic = ignore_inf_ic
         self.n_jobs = n_jobs
+
+        # Fit params, inherited from mlemodel.py 
+        self.method = method
+        self.skip_hessian = skip_hessian
+
+        # hessian and score params
+        self.approx_centered = approx_centered
+        self.approx_complex_step = approx_complex_step
+
+        # smooth params
+        self.return_raw = return_raw
 
         super(AutoETS, self).__init__()
 
