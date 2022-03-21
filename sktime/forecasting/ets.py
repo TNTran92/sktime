@@ -205,8 +205,6 @@ class AutoETS(_StatsModelsAdapter):
         approx_centered = False,
         approx_complex_step = True,
         return_raw = False, 
-
-
         **kwargs
     ):
         # Model params
