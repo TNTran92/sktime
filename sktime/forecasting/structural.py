@@ -171,12 +171,6 @@ class UnobservedComponents(_StatsModelsAdapter):
     approximate_diffuse_variance : float, optional
         If using approximate diffuse initialization, the initial variance is used.
         Fefault is 1e6
-    transformed : bool,
-        Whether or not params is already transformed. If set to False,
-        transform_params is called.
-        Default is True
-    includes_fixed : bool,
-        Default is False
 
     See Also
     --------
