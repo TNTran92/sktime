@@ -19,7 +19,7 @@ f = ThetaForecaster(sp=12)
 f.fit(y_train)
 
 
-QUANTILE_PRED = f.predict_quantiles(fh=fh, alpha=[0.05, 0.5, 0.95])
+QUANTILE_PRED = f.predict_quantiles(fh=fh, alpha=[0.5])
 INTERVAL_PRED = f.predict_interval(fh=fh, coverage=0.9)
 
 
@@ -41,7 +41,7 @@ def test_evaluate_to_zero(Metric):
     Loss = Metric.create_test_instance()
     y_true = QUANTILE_PRED["Quantiles"][0.5]
     eval_loss = Loss.evaluate(y_true, y_pred=QUANTILE_PRED)
-    assert np.isclose(0, eval_loss)
+    assert np.isclose(0, eval_loss).all()
 
 
 @pytest.mark.parametrize("Metric", list_of_metrics)
@@ -51,3 +51,20 @@ def test_evaluate_by_index_to_zero(Metric):
     y_true = QUANTILE_PRED["Quantiles"][0.5]
     index_loss = Loss.evaluate_by_index(y_true, y_pred=QUANTILE_PRED)
     assert all([np.isclose(0, a) for a in index_loss.values[:, 0]])
+
+
+@pytest.mark.parametrize("Metric", list_of_metrics)
+def test_evaluate_alpha_postive(Metric):
+    """Tests whether metric returns 0 when y_true=y_pred by index."""
+    Loss = Metric.create_test_instance().set_params(alpha=0.5)
+    res = Loss(y_true=y_test, y_pred=QUANTILE_PRED)
+    res
+
+
+@pytest.mark.parametrize("Metric", list_of_metrics)
+def test_evaluate_alpha_negative(Metric):
+    """Tests whether metric returns 0 when y_true=y_pred by index."""
+    with pytest.raises(ValueError):
+        Loss = Metric.create_test_instance().set_params(alpha=0.05)
+        res = Loss(y_true=y_test, y_pred=QUANTILE_PRED)
+        res

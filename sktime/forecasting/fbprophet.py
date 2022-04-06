@@ -19,7 +19,9 @@ class Prophet(_ProphetAdapter):
 
     Parameters
     ----------
-    freq: String of DatetimeIndex frequency. Refer [2]_ for possible values:
+    freq: str, default=None
+        A DatetimeIndex frequency. For possible values see
+        https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html
     add_seasonality: dict or None, default=None
         Dict with args for Prophet.add_seasonality().
         Dict can have the following keys/values:
@@ -99,7 +101,6 @@ class Prophet(_ProphetAdapter):
     References
     ----------
     .. [1] https://facebook.github.io/prophet
-    .. [2] https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html
 
     Examples
     --------
@@ -197,8 +198,15 @@ class Prophet(_ProphetAdapter):
         return self
 
     @classmethod
-    def get_test_params(cls):
+    def get_test_params(cls, parameter_set="default"):
         """Return testing parameter settings for the estimator.
+
+        Parameters
+        ----------
+        parameter_set : str, default="default"
+            Name of the set of test parameters to return, for use in tests. If no
+            special parameters are defined for a value, will return `"default"` set.
+
 
         Returns
         -------
