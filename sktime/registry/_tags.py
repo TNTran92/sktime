@@ -199,6 +199,12 @@ ESTIMATOR_TAG_REGISTER = [
         "does the forecaster implement predict_interval or predict_quantiles?",
     ),
     (
+        "capability:pred_var",
+        "forecaster",
+        "bool",
+        "does the forecaster implement predict_variance?",
+    ),
+    (
         "capability:multivariate",
         "classifier",
         "bool",
@@ -206,9 +212,9 @@ ESTIMATOR_TAG_REGISTER = [
     ),
     (
         "capability:unequal_length",
-        "classifier",
+        ["classifier", "transformer"],
         "bool",
-        "can the classifier handle unequal length time series?",
+        "can the estimator handle unequal length time series?",
     ),
     # "capability:missing_values" is same as "handles-missing-data" tag.
     # They are kept distinct intentionally for easier TSC refactoring.
@@ -218,6 +224,18 @@ ESTIMATOR_TAG_REGISTER = [
         "classifier",
         "bool",
         "can the classifier handle missing data (NA, np.nan) in inputs?",
+    ),
+    (
+        "capability:unequal_length:removes",
+        "transformer",
+        "bool",
+        "is the transformer result guaranteed to be equal length series (and series)?",
+    ),
+    (
+        "capability:missing_values:removes",
+        "transformer",
+        "bool",
+        "is the transformer result guaranteed to have no missing values?",
     ),
     (
         "capability:train_estimate",

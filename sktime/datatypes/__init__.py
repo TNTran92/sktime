@@ -4,7 +4,6 @@
 __author__ = ["fkiraly"]
 
 from sktime.datatypes._check import (
-    check_is,
     check_is_mtype,
     check_is_scitype,
     check_raise,
@@ -23,12 +22,12 @@ from sktime.datatypes._registry import (
     SCITYPE_LIST,
     SCITYPE_REGISTER,
     mtype_to_scitype,
+    scitype_to_mtype,
 )
 from sktime.datatypes._utilities import get_cutoff
 from sktime.datatypes._vectorize import VectorizedDF
 
 __all__ = [
-    "check_is",
     "check_is_mtype",
     "check_is_scitype",
     "check_raise",
@@ -45,6 +44,7 @@ __all__ = [
     "MTYPE_LIST_SERIES",
     "MTYPE_LIST_TABLE",
     "scitype",
+    "scitype_to_mtype",
     "SCITYPE_LIST",
     "SCITYPE_REGISTER",
     "VectorizedDF",
