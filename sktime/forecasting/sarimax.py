@@ -15,7 +15,6 @@ class SARIMAX(_StatsModelsAdapter):
     """SARIMAX forecaster.
 
     Direct interface for `statsmodels.tsa.api.SARIMAX`.
-    TEST COMMIT!
 
     Parameters
     ----------
