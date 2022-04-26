@@ -5,6 +5,7 @@
 
 __all__ = ["SARIMAX"]
 __author__ = ["TNTran92"]
+# Check for CI CD
 
 from statsmodels.tsa.api import SARIMAX as _SARIMAX
 
@@ -185,4 +186,3 @@ class SARIMAX(_StatsModelsAdapter):
         https://www.statsmodels.org/dev/examples/notebooks/generated/statespace_structural_harvey_jaeger.html
         """
         return self._fitted_forecaster.summary()
-        # Hahahaha
