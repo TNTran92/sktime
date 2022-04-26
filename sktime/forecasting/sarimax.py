@@ -7,6 +7,7 @@ __all__ = ["SARIMAX"]
 __author__ = ["TNTran92"]
 
 from statsmodels.tsa.api import SARIMAX as _SARIMAX
+# Check commit for CI/CD
 
 from sktime.forecasting.base.adapters import _StatsModelsAdapter
 
